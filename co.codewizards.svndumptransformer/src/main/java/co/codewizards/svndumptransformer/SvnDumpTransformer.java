@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.UUID;
 
 /**
@@ -228,7 +229,7 @@ public class SvnDumpTransformer {
 
 		for (Map.Entry<String, String> me : replacementMap.entrySet()) {
 			if (string.contains(me.getKey()))
-				string = string.replaceAll(me.getKey(), me.getValue());
+				string = string.replaceAll(Pattern.quote(me.getKey()), me.getValue());
 		}
 		return string;
 	}
